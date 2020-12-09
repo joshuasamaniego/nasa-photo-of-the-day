@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import "./App.css";
-import Header from './Components/Header/Header'
-import PhotoInfo from "./Components/Photo/PhotoInfo"
+import Header from './Components/Header/Header';
+import PhotoInfo from "./Components/Photo/PhotoInfo";
+import { API_KEY, BASE_URL } from "./constants";
 
 function App() {
   const [data, setData] = useState([]);
   console.log(data);
 
   useEffect(() => {
-    axios.get('https://swapi.dev/api/films')
+    axios.get(`${BASE_URL}?api_key=${API_KEY}`)
       .then(res => {
-        setData(res.data.results);
+        console.log(res);
+        setData(res.data);
       })
       .catch(err => {
         debugger;
@@ -21,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <PhotoInfo filmsData={data}/>
+      <PhotoInfo apodData={data}/>
     </div>
   );
 }

@@ -1,60 +1,41 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react';
+// import styled from 'styled-components';
+import ReactPlayer from "react-player";
+import "./PhotoInfo.css";
 
+// const StyledPhotoInfo = styled.div` // this can be styled.ul, styled.h1, styled.p, etc. to target the specific thing you want
+//     color: ${props => props.theme.primaryColor};
+//     width: 100%;
+//     display: flex;
+//     flex-wrap: wrap;
+// `
+
+// const Photo = styled.div`
+//     width: 40%;
+//     margin: ${props => props.theme.margin.regular}; // this is taking a CallBack Function
+    
+//     &:hover {
+//       transform: scale(1.1);
+//       transition: transform 0.5s ease-in-out;
+//       color: ${props => props.theme.secondaryColor};
+//     }
+//     transition: transform 0.5s ease-in-out;
+// `
 
 function PhotoInfo(props) {
-    const { filmsData } = props;
-    console.log(filmsData);
+    const { apodData } = props;
+    console.log(apodData);
 
-    const [planetInfo, setPlanetInfo] = useState(null);
-    console.log(planetInfo);
-
-    useEffect(() => {
-        axios.get('http://swapi.dev/api/planets/')
-          .then(res => {
-            setPlanetInfo(res.data.results);
-          })
-          .catch(err => {
-            debugger;
-          })
-      }, []);
-
-  
     return (
-      <div className="PhotoInfo">
-          {filmsData.map((film, index) => {
-              return (
-                <ul key={film.episode_id}>
-                    <li>{film.title}</li>
-                    <li>Film: {index + 1}</li>
-                    <li>Director: {film.director}</li>
-                    <li>Producer: {film.producer}</li>
-                    <li>Release Date: {film.release_date}</li>
-                    <li>Episode: {film.episode_id}</li>
-                    <li>Opening Fanfare: '{film.opening_crawl}'</li>
-                    {/* <li>{film.planets.map((episode_id) => {  // This works, however I would need to perform another axios
-                        return (                                 // request to get the planet data.
-                            <div key={episode_id}>
-                                <ol>{film.planets}</ol>
-                            </div>
-                        )
-                    })}
-                    </li> */}
-                </ul>
-              )
-          })}
-          <h4>Planets in these Films:</h4>
-          {
-              planetInfo && planetInfo.map((planet, index) => {
-                  return (
-                    <div key={index}>
-                        <p>{planet.name}</p>
-                    </div>
-                  )
-              })
-          }
-      </div>
-    );
-  }
+      // <StyledPhotoInfo>
+          <div className="photo__container">
+            <h2 className="photo__title">{apodData.title}</h2>
+            <h4 className="photo__date">{apodData.date}</h4>
+            <p className="photo__description">{apodData.explanation}</p>
+            <ReactPlayer className="video__player" url={apodData.url} />
+        </div>
+      // </StyledPhotoInfo>
+  )
+}
   
   export default PhotoInfo;

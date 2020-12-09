@@ -1,0 +1,19 @@
+.photo__container {
+  /* width: 80%; */
+  /* border: 1px solid black; */
+  display: flex;
+  flex-flow: column wrap;
+}
+.photo__title {
+  margin: 1% 0%;
+}
+.photo__date {
+  margin: 1% 0%;
+}
+.photo__description {
+  margin: 0% 3% 1% 3%;
+}
+.video__player {
+  margin: 2%;
+  border: 1px solid white;
+}
