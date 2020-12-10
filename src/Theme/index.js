@@ -1,16 +1,16 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    primaryColor: "#132E32", 
-    secondaryColor: "#176087",
-    thirdColor: "yellow",
-    black: "black",
-    white: "white",
-    breakpointMobile: "(max-width: 550px)",
-    breakpoints: {
-      mobile: "(max-width: 550px)",
-      tablet: "(max-width: 800px)",
-    },
+    primaryColor: "#EF6E6C", 
+    secondaryColor: "#5DA399",
+    thirdColor: "#9FCCD1",
+    black: "#35393C",
+    white: "#FDFDFF",
     margin: {
         regular: "5%",
+        little: "2%",
+    },
+    padding: {
+      regular: "5%",
+      little: "2%",
     }
-  };
+}

@@ -4,6 +4,14 @@ import "./App.css";
 import Header from './Components/Header/Header';
 import PhotoInfo from "./Components/Photo/PhotoInfo";
 import { API_KEY, BASE_URL } from "./constants";
+import styles from "styled-components";
+
+const StyledApp = styles.div`
+  background-color: ${props => props.theme.secondaryColor};
+  margin-top: 0;
+  text-align: center;
+  align-items: center;
+`
 
 function App() {
   const [data, setData] = useState([]);
@@ -21,10 +29,10 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Header />
+    <StyledApp>
+      <Header apodData={data}/>
       <PhotoInfo apodData={data}/>
-    </div>
+    </StyledApp>
   );
 }
 
